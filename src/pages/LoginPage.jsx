@@ -142,7 +142,7 @@ const LoginPage = () => {
 
 
         {/* ─── This is the Login Form frame from Welcome Back! ──────────────────────────────────── */}
-        <div className="px-10 py-10">
+        <div className="px-6 sm:px-20 py-10">
 
           <h2
             className="text-xl font-extrabold mb-1"
