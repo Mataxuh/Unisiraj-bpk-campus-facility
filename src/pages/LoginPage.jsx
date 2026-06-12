@@ -102,7 +102,7 @@ const LoginPage = () => {
                 src="/bpk-logo.png"
                 alt="BPK"
                 className="h-16 sm:h-20 object-contain"
-                style={{ mixBlendMode: 'multiply' }}
+                style={{ mixBlendMode: 'screen' }}
               />
               <p className="text-xs font-bold" style={{ color: '#f0b145' }}>
                 BPK
