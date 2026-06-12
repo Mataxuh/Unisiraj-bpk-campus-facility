@@ -1,12 +1,12 @@
 // src/pages/LoginPage.jsx
 // Login page with dual language support
+// Logos without circles for cleaner professional look
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { useLanguage } from '../context/LanguageContext';
 import { Eye, EyeOff, LogIn, AlertCircle, ChevronDown, ChevronUp, KeyRound } from 'lucide-react';
-
 import LanguageToggle from '../components/LanguageToggle';
 
 const LoginPage = () => {
@@ -14,11 +14,11 @@ const LoginPage = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [email,           setEmail]           = useState('');
+  const [password,        setPassword]        = useState('');
+  const [showPassword,    setShowPassword]    = useState(false);
+  const [error,           setError]           = useState('');
+  const [isLoading,       setIsLoading]       = useState(false);
   const [showCredentials, setShowCredentials] = useState(false);
 
   useEffect(() => {
@@ -30,17 +30,14 @@ const LoginPage = () => {
     setError('');
     setIsLoading(true);
 
-    // Check empty fields first
     if (!email.trim() || !password.trim()) {
       setError(t('login.errorEmpty'));
       setIsLoading(false);
       return;
     }
 
-    // Wrap in try/catch so it NEVER gets stuck loading
     try {
       const result = login(email.trim(), password);
-
       if (result.success) {
         navigate(`/${result.user.role}`, { replace: true });
       } else {
@@ -48,7 +45,6 @@ const LoginPage = () => {
         setIsLoading(false);
       }
     } catch (err) {
-      // Something unexpected happened — show error, stop loading
       setError('Something went wrong. Please try again.');
       setIsLoading(false);
     }
@@ -56,60 +52,56 @@ const LoginPage = () => {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-6"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-6"
       style={{
-        backgroundImage: 'url(/background_login.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'repeat',
+        backgroundImage:    'url(/background_login.jpg)',
+        backgroundSize:     'auto',
+        backgroundRepeat:   'repeat',
+        backgroundColor:    '#dde3f0',
       }}
     >
 
-      {/* ─── Language Toggle at the Top Right corner ─────────────────────── */}
-      <div className="absolute top-6 right-9">
+      {/* ─── Language Toggle Top Right ─────────────────────── */}
+      <div className="absolute top-4 right-4">
         <LanguageToggle variant="login" />
       </div>
 
-      
+      {/* ─── Main Login Card (rounded-xl)──────────────────────────────── */}
+      <div className="bg-white shadow-2xl w-full max-w-lg overflow-hidden">
 
-      {/* ─── Radius of the Main Login Card - aka (blue frame) (rounded-xl)────────────────────────────────── */}
-      <div className="bg-white shadow-2xl rounded-xl w-full max-w-lg overflow-hidden">
-
-
-        {/* ─── The Blue Header Banner ───────────────────────────────── */}
+        {/* ─── Header Banner ───────────────────────────────── */}
         <div
-          className="px-9 py-9 flex flex-col items-center gap-4"
+          className="px-6 py-8 flex flex-col items-center gap-4"
           style={{ backgroundColor: '#1B2D6B' }}
         >
-          {/* The Gap btw the two Logos  */}
-          <div className="flex items-center justify-center gap-9">
 
-            {/* UniSiraj Logo */}
-            <div className="flex flex-col items-center gap-1.5">
+          {/* ─── Logos Row — No circles, clean display ──────── */}
+          <div className="flex items-center justify-center gap-6 w-full">
+
+            {/* UniSiraj Logo — no circle, just clean image */}
+            <div className="flex flex-col items-center gap-2 flex-1">
               <img
                 src="/logo.png"
                 alt="UniSiraj"
-                className="h-30 w-30 object-contain rounded-full bg-white p-1 shadow-lg"
+                className="h-16 sm:h-20 object-contain"
               />
               <p className="text-white text-xs font-bold">
                 UNI<span style={{ color: '#f5b545' }}>SIRAJ</span>
               </p>
             </div>
 
-
-            {/* The Divider btw the two Logos */}
+            {/* Divider */}
             <div
-              className="h-15 w-px opacity-40"
+              className="h-16 w-px opacity-40 flex-shrink-0"
               style={{ backgroundColor: '#b77b14' }}
             />
 
-
-            {/* The BPK Logo */}
-            <div className="flex flex-col items-center gap-1.5">
+            {/* BPK Logo — no circle, just clean image */}
+            <div className="flex flex-col items-center gap-2 flex-1">
               <img
                 src="/bpk-logo.png"
                 alt="BPK"
-                className="h-30 w-30 object-contain rounded-full bg-white p-1 shadow-lg"
+                className="h-16 sm:h-20 object-contain"
               />
               <p className="text-xs font-bold" style={{ color: '#f0b145' }}>
                 BPK
@@ -118,20 +110,16 @@ const LoginPage = () => {
 
           </div>
 
-
-          {/* The University Informations after the logo */}
+          {/* University Info */}
           <div className="text-center">
-            <p className="text-xs mt-2" style={{ color: '#edb149' }}>
+            <p className="text-xs mt-1" style={{ color: '#edb149' }}>
               Universiti Islam Antarabangsa Tuanku Syed Sirajuddin (Unisiraj)
             </p>
             <p className="text-white text-xs mt-1 opacity-70">
               Bahagian Penginapan & Kediaman
             </p>
-
-
-            {/* This is the Campus Facility Management box */}
             <div
-              className="mt-7 px-6 py-1.5 rounded-full text-xs font-semibold border inline-block"
+              className="mt-4 px-5 py-1.5 rounded-full text-xs font-semibold border inline-block"
               style={{ borderColor: '#b77b14', color: '#e6a83d' }}
             >
               🏢 {t('login.systemTitle')}
@@ -139,10 +127,8 @@ const LoginPage = () => {
           </div>
         </div>
 
-
-
-        {/* ─── This is the Login Form frame from Welcome Back! ──────────────────────────────────── */}
-        <div className="px-6 sm:px-20 py-10">
+        {/* ─── Login Form ──────────────────────────────────── */}
+        <div className="px-6 sm:px-16 py-8">
 
           <h2
             className="text-xl font-extrabold mb-1"
@@ -156,7 +142,7 @@ const LoginPage = () => {
 
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
 
-            {/* The Email bar here*/}
+            {/* Email */}
             <div>
               <label
                 className="block text-sm font-semibold mb-1"
@@ -175,7 +161,7 @@ const LoginPage = () => {
               />
             </div>
 
-            {/* The Password bar here*/}
+            {/* Password */}
             <div>
               <label
                 className="block text-sm font-semibold mb-1"
@@ -206,7 +192,7 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* The Error handler */}
+            {/* Error */}
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg flex items-start gap-2">
                 <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -214,11 +200,11 @@ const LoginPage = () => {
               </div>
             )}
 
-            {/* The Sign In button */}
+            {/* Sign In Button */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 py-2 rounded-lg font-bold text-sm text-white transition-opacity mt-2 disabled:opacity-70"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg font-bold text-sm text-white transition-opacity mt-2 disabled:opacity-70"
               style={{ backgroundColor: isLoading ? '#999' : '#1B2D6B' }}
             >
               {isLoading ? (
@@ -236,15 +222,14 @@ const LoginPage = () => {
 
           </form>
 
-
-          {/* ─── Here is the Collapsible Demo Credentials ─────────────── */}
+          {/* ─── Collapsible Demo Credentials ─────────────── */}
           <div className="mt-6">
             <button
               onClick={() => setShowCredentials(!showCredentials)}
               className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all"
               style={{
                 backgroundColor: showCredentials ? '#1B2D6B' : '#EEF0F8',
-                color: showCredentials ? '#E8A020' : '#1B2D6B',
+                color:           showCredentials ? '#E8A020' : '#1B2D6B',
               }}
             >
               <div className="flex items-center gap-2">
@@ -270,7 +255,6 @@ const LoginPage = () => {
                   { role: t('login.roles.tech1'),   email: 'tech@unisiraj.edu.my',     pass: 'tech123',    icon: '🔧' },
                   { role: t('login.roles.tech2'),   email: 'tech2@unisiraj.edu.my',    pass: 'tech456',    icon: '🔧' },
                   { role: t('login.roles.admin'),   email: 'admin@unisiraj.edu.my',    pass: 'admin123',   icon: '⚙️' },
-
                 ].map((item) => (
                   <div
                     key={item.email}
@@ -291,8 +275,8 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* ─── Footer ──────────────────────────────────────── */}
-      <p className="text-xs text-gray-500 mt-2 text-center">
+      {/* ─── Footer ───────────────────────────────────────── */}
+      <p className="text-xs text-gray-500 mt-4 text-center">
         {t('login.footer')}
       </p>
 
