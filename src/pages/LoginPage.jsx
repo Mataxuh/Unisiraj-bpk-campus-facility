@@ -85,9 +85,9 @@ const LoginPage = () => {
                 alt="UniSiraj"
                 className="h-16 sm:h-20 object-contain"
               />
-              <p className="text-white text-xs font-bold">
+              {/*<p className="text-white text-xs font-bold">
                 UNI<span style={{ color: '#f5b545' }}>SIRAJ</span>
-              </p>
+              </p>*/}
             </div>
 
             {/* Divider */}
