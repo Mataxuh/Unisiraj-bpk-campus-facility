@@ -1,7 +1,8 @@
 // src/App.jsx
 // Main app component with routing and route protection
-// Handles: page navigation, role-based access control
+// Handles: page navigation, role-based access control, splash screen
 
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useApp } from './context/AppContext';
 
@@ -16,6 +17,7 @@ import NotFoundPage from './pages/NotFoundPage';
 // Components
 import Navbar from './components/Navbar';
 import Notification from './components/Notification';
+import SplashScreen from './components/SplashScreen';
 
 // ═════════════════════════════════════════════════════════════
 // PROTECTED ROUTE - Role-based Access Control
@@ -24,17 +26,8 @@ import Notification from './components/Notification';
 const ProtectedRoute = ({ children, requiredRole }) => {
   const { user } = useApp();
 
-  // Not logged in → redirect to login
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
-  // Wrong role → redirect to login
-  if (user.role !== requiredRole) {
-    return <Navigate to="/login" replace />;
-  }
-
-  // All checks passed → render page
+  if (!user) return <Navigate to="/login" replace />;
+  if (user.role !== requiredRole) return <Navigate to="/login" replace />;
   return children;
 };
 
@@ -47,13 +40,9 @@ const AppLayout = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#EEF0F8' }}>
-      {/* Show navbar only when logged in */}
       {user && <Navbar />}
-
-      {/* Show notifications globally */}
       {notification && <Notification />}
 
-      {/* Page content */}
       <Routes>
         {/* ─── PUBLIC ROUTES ─────────────────────────────────── */}
         <Route path="/login" element={<LoginPage />} />
@@ -88,7 +77,7 @@ const AppLayout = () => {
           }
         />
 
-        {/* ─── STAFF ROUTES ──────────────────────────────── */}
+        {/* ─── STAFF ROUTES ──────────────────────────────────── */}
         <Route
           path="/staff"
           element={
@@ -98,7 +87,7 @@ const AppLayout = () => {
           }
         />
 
-        {/* ─── CATCH-ALL ROUTES ──────────────────────────────– */}
+        {/* ─── CATCH-ALL ROUTES ──────────────────────────────── */}
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
@@ -107,12 +96,30 @@ const AppLayout = () => {
 };
 
 // ═════════════════════════════════════════════════════════════
-// ROOT APP
+// ROOT APP — with Splash Screen
 // ═════════════════════════════════════════════════════════════
 
 const App = () => {
+  // ─── Splash screen state ──────────────────────────────────
+  // Shows splash for 3 seconds then hides it
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    // Hide splash screen after 3 seconds
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3000);
+
+    // Cleanup timer on unmount
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <BrowserRouter>
+      {/* Show splash screen on first load */}
+      {showSplash && <SplashScreen />}
+
+      {/* Main app — always rendered but hidden behind splash */}
       <AppLayout />
     </BrowserRouter>
   );
