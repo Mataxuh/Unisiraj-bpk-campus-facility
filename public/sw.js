@@ -1,13 +1,9 @@
-// sw.js — Service Worker
-// Caches app files for offline use
-// Runs in the background, separate from the main app
+// sw.js — Service Worker (Fixed Version)
+// Uses network-first strategy for better reliability
 
-const CACHE_NAME = 'bpk-cfms-v1';
+const CACHE_NAME = 'bpk-cfms-v2';
 
-// Files to cache for offline use
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
   '/logo.png',
   '/bpk-logo.png',
   '/icon192.png',
@@ -15,55 +11,70 @@ const STATIC_ASSETS = [
   '/background_login.jpg',
 ];
 
-// ─── Install Event ─────────────────────────────────────────
-// Runs when service worker is first installed
-// Caches all static assets
+// ─── Install ───────────────────────────────────────────────
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('BPK CFMS: Caching static assets...');
+      // Only cache images, NOT HTML or JS
       return cache.addAll(STATIC_ASSETS);
     })
   );
-  // Activate immediately without waiting
   self.skipWaiting();
 });
 
-// ─── Activate Event ────────────────────────────────────────
-// Runs when service worker takes control
-// Cleans up old caches from previous versions
+// ─── Activate ──────────────────────────────────────────────
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
           .filter((name) => name !== CACHE_NAME)
-          .map((name) => {
-            console.log('BPK CFMS: Removing old cache:', name);
-            return caches.delete(name);
-          })
+          .map((name) => caches.delete(name))
       );
     })
   );
-  // Take control of all pages immediately
   self.clients.claim();
 });
 
-// ─── Fetch Event ───────────────────────────────────────────
-// Intercepts all network requests
-// Returns cached version if available, otherwise fetches from network
+// ─── Fetch ─────────────────────────────────────────────────
+// NETWORK FIRST strategy:
+// → Always try network first
+// → Only use cache if network fails
+// → HTML/Navigation requests ALWAYS go to network
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // Return cached version if found
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      // Otherwise fetch from network
-      return fetch(event.request).catch(() => {
-        // If network fails too, return the cached index.html
+
+  // ── For navigation requests (page loads) ──────────────
+  // Always fetch fresh from network — never serve cached HTML
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => {
         return caches.match('/index.html');
-      });
+      })
+    );
+    return;
+  }
+
+  // ── For static assets (images, fonts) ─────────────────
+  // Try cache first, then network
+  if (event.request.destination === 'image') {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        return cached || fetch(event.request).then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, clone);
+          });
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // ── For everything else → network first ───────────────
+  event.respondWith(
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
     })
   );
 });
