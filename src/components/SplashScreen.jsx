@@ -34,7 +34,7 @@ const SplashScreen = () => {
           animation: 'fadeInUp 0.8s ease-out 0.4s both',
         }}
       >
-        Campus Facility Management System
+        Campus Facility Management System (CFMS)
       </p>
 
 
