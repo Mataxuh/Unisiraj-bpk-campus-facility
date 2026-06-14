@@ -1,6 +1,6 @@
 // src/pages/LoginPage.jsx
 // Login page with dual language support
-// Logos without circles for cleaner professional look
+// Header shows BPK only (UniSiraj shown on splash screen)
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -54,10 +54,10 @@ const LoginPage = () => {
     <div
       className="relative min-h-screen flex flex-col items-center justify-center px-4 py-6"
       style={{
-        backgroundImage:    'url(/background_login.jpg)',
-        backgroundSize:     'auto',
-        backgroundRepeat:   'repeat',
-        backgroundColor:    '#dde3f0',
+        backgroundImage:  'url(/background_login.jpg)',
+        backgroundSize:   'auto',
+        backgroundRepeat: 'repeat',
+        backgroundColor:  '#dde3f0',
       }}
     >
 
@@ -66,61 +66,49 @@ const LoginPage = () => {
         <LanguageToggle variant="login" />
       </div>
 
-      {/* ─── Main Login Card (rounded-xl)──────────────────────────────── */}
+      {/* ─── Main Login Card (rounded lg)──────────────────────────────── */}
       <div className="bg-white shadow-2xl w-full max-w-lg overflow-hidden">
 
-        {/* ─── Header Banner ───────────────────────────────── */}
+        {/* ─── Header Banner — BPK Only ────────────────────── */}
         <div
           className="px-6 py-8 flex flex-col items-center gap-4"
           style={{ backgroundColor: '#1B2D6B' }}
         >
 
-          {/* ─── Logos Row — No circles, clean display ──────── */}
-          <div className="flex items-center justify-center gap-6 w-full">
-
-            {/* UniSiraj Logo — no circle, just clean image */}
-            <div className="flex flex-col items-center gap-2 flex-1">
-              <img
-                src="/logo.png"
-                alt="UniSiraj"
-                className="h-16 sm:h-20 object-contain"
-              />
-              {/*<p className="text-white text-xs font-bold">
-                UNI<span style={{ color: '#f5b545' }}>SIRAJ</span>
-              </p>*/}
-            </div>
-
-            {/* Divider */}
-            <div
-              className="h-16 w-px opacity-40 flex-shrink-0"
-              style={{ backgroundColor: '#b77b14' }}
+          {/* ─── BPK Logo — Centered & Bigger ───────────────── */}
+          <div className="flex flex-col items-center gap-2">
+            <img
+              src="/bpk-logo.png"
+              alt="BPK"
+              className="h-24 sm:h-28 object-contain rounded-full bg-white p-2 shadow-lg"
             />
-
-            {/* BPK Logo — no circle, just clean image */}
-            <div className="flex flex-col items-center gap-2 flex-1">
-              <img
-                src="/bpk-logo.png"
-                alt="BPK"
-                className="h-16 sm:h-20 object-contain rounded-full bg-white p-1.5"
-                style={{ mixBlendMode: 'screen' }}
-              />
-              <p className="text-xs font-bold" style={{ color: '#f0b145' }}>
-                BPK
-              </p>
-            </div>
-
+            <p
+              className="text-sm font-extrabold tracking-widest"
+              style={{ color: '#f0b145' }}
+            >
+              BPK
+            </p>
           </div>
 
-          {/* University Info */}
-          <div className="text-center">
-            <p className="text-xs mt-1" style={{ color: '#edb149' }}>
-              Universiti Islam Antarabangsa Tuanku Syed Sirajuddin (Unisiraj)
+          {/* ─── Department & System Info ────────────────────── */}
+          <div className="text-center flex flex-col gap-2">
+
+            {/* Department Name */}
+            <p
+              className="text-sm font-semibold"
+              style={{ color: '#edb149' }}
+            >
+              {t('login.department')}
             </p>
-            <p className="text-white text-xs mt-1 opacity-70">
-              Bahagian Penginapan & Kediaman
+
+            {/* University Name */}
+            <p className="text-white text-xs opacity-70">
+              Universiti Islam Antarabangsa Tuanku Syed Sirajuddin (UniSIRAJ)
             </p>
+
+            {/* System Title Badge */}
             <div
-              className="mt-4 px-5 py-1.5 rounded-full text-xs font-semibold border inline-block"
+              className="mt-3 px-5 py-1.5 rounded-full text-xs font-semibold border inline-block"
               style={{ borderColor: '#b77b14', color: '#e6a83d' }}
             >
               🏢 {t('login.systemTitle')}
@@ -129,7 +117,7 @@ const LoginPage = () => {
         </div>
 
         {/* ─── Login Form ──────────────────────────────────── */}
-        <div className="px-6 sm:px-16 py-8">
+        <div className="px-6 sm:px-15 py-8">
 
           <h2
             className="text-xl font-extrabold mb-1"
@@ -143,7 +131,7 @@ const LoginPage = () => {
 
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
 
-            {/* Email */}
+            {/* ─── Email Field ─────────────────────────────── */}
             <div>
               <label
                 className="block text-sm font-semibold mb-1"
@@ -162,7 +150,7 @@ const LoginPage = () => {
               />
             </div>
 
-            {/* Password */}
+            {/* ─── Password Field ──────────────────────────── */}
             <div>
               <label
                 className="block text-sm font-semibold mb-1"
@@ -180,6 +168,7 @@ const LoginPage = () => {
                   required
                   className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 transition pr-10 disabled:opacity-50"
                 />
+                {/* Show/Hide Password Toggle */}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -193,7 +182,7 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* Error */}
+            {/* ─── Error Message ───────────────────────────── */}
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg flex items-start gap-2">
                 <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -201,7 +190,7 @@ const LoginPage = () => {
               </div>
             )}
 
-            {/* Sign In Button */}
+            {/* ─── Sign In Button ──────────────────────────── */}
             <button
               type="submit"
               disabled={isLoading}
@@ -243,6 +232,7 @@ const LoginPage = () => {
               }
             </button>
 
+            {/* ─── Credentials List ────────────────────────── */}
             {showCredentials && (
               <div
                 className="mt-2 rounded-xl p-4 text-xs flex flex-col gap-1"

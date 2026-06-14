@@ -70,6 +70,7 @@ export const translations = {
     },
 
     login: {
+      department: 'Accommodation & Residential Division',
       welcome:          'Welcome Back!',
       subtitle:         'Sign in to your account to continue.',
       email:            'Email Address',
@@ -261,6 +262,7 @@ export const translations = {
     },
 
     login: {
+      department: 'Bahagian Penginapan & Kediaman',
       welcome:          'Selamat Kembali!',
       subtitle:         'Log masuk ke akaun anda untuk meneruskan...',
       email:            'Alamat E-mel',
