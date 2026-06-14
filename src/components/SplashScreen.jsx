@@ -4,7 +4,7 @@
 const SplashScreen = () => {
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-0.5 px-20"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 px-20"
       style={{
         backgroundColor:  '#dde3f0',
         backgroundImage:  'url(/background_login.jpg)',
@@ -22,7 +22,7 @@ const SplashScreen = () => {
         <img
           src="/logo.png"
           alt="UniSiraj"
-          className="h-80 w-80 object-contain"
+          className="h-52 w-52 object-contain"
           style={{ animation: 'pulse 2s ease-in-out infinite' }}
         />
       </div>
@@ -38,7 +38,7 @@ const SplashScreen = () => {
 
       {/* ─── System Info ────────────────────────────────── */}
       <div
-        className="text-center flex flex-col gap-5"
+        className="text-center flex flex-col gap-1"
         style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
       >
         {/* System Name */}
