@@ -1,58 +1,60 @@
 // src/components/SplashScreen.jsx
-// Splash screen — shows UniSiraj branding on app load
-// Clean single logo with system info and loading dots
+// Splash screen — UniSiraj logo with Islamic pattern background
 
 const SplashScreen = () => {
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 px-6"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-0.5 px-20"
       style={{
-        backgroundColor: '#1B2D6B',
-        animation: 'fadeOut 0.5s ease-in-out 2.5s forwards',
+        backgroundColor:  '#dde3f0',
+        backgroundImage:  'url(/background_login.jpg)',
+        backgroundSize:   'auto',
+        backgroundRepeat: 'repeat',
+        animation:        'fadeOut 0.5s ease-in-out 2.5s forwards',
       }}
     >
 
       {/* ─── UniSiraj Logo — Big and Centered ──────────── */}
       <div
-        className="flex flex-col items-center gap-3"
+        className="flex flex-col items-center"
         style={{ animation: 'fadeInUp 0.8s ease-out forwards' }}
       >
         <img
           src="/logo.png"
           alt="UniSiraj"
-          className="h-36 w-36 object-contain"
+          className="h-80 w-80 object-contain"
           style={{ animation: 'pulse 2s ease-in-out infinite' }}
         />
-        <p className="text-white text-lg font-extrabold tracking-widest">
-          UNI<span style={{ color: '#E8A020' }}>SIRAJ</span>
-        </p>
       </div>
 
       {/* ─── Gold Divider ───────────────────────────────── */}
       <div
-        className="w-16 h-px opacity-60"
+        className="w-20 h-0.5 opacity-60 rounded-full"
         style={{
           backgroundColor: '#E8A020',
-          animation: 'fadeInUp 0.8s ease-out 0.2s both',
+          animation:        'fadeInUp 0.8s ease-out 0.5s both',
         }}
       />
 
       {/* ─── System Info ────────────────────────────────── */}
       <div
-        className="text-center flex flex-col gap-2"
+        className="text-center flex flex-col gap-5"
         style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
       >
         {/* System Name */}
         <p
           className="text-base font-bold tracking-wide"
-          style={{ color: '#E8A020' }}
+          style={{ color: '#1B2D6B' }}
         >
           Campus Facility Management System
         </p>
 
         {/* Full University Name */}
-        <p className="text-white text-xs opacity-70 max-w-xs text-center leading-relaxed">
-          Universiti Islam Antarabangsa Tuanku Syed Sirajuddin
+        <p
+          className="text-xs max-w-xs text-center leading-relaxed"
+          style={{ color: '#1B2D6B', opacity: 0.7 }}
+        >
+          Universiti Islam Antarabangsa Tuanku Syed Sirajuddin (UniSIRAJ)
         </p>
       </div>
 
@@ -66,8 +68,8 @@ const SplashScreen = () => {
             key={i}
             className="w-2 h-2 rounded-full"
             style={{
-              backgroundColor: '#E8A020',
-              animation: `bounceDot 1.2s ease-in-out ${i * 0.2}s infinite`,
+              backgroundColor: '#1B2D6B',
+              animation:        `bounceDot 1.2s ease-in-out ${i * 0.2}s infinite`,
             }}
           />
         ))}
