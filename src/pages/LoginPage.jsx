@@ -82,23 +82,23 @@ const LoginPage = () => {
               alt="BPK"
               className="h-24 sm:h-28 object-contain rounded-full bg-white p-2 shadow-lg"
             />
-            <p
+            {/*<p
               className="text-sm font-extrabold tracking-widest"
               style={{ color: '#f0b145' }}
             >
               BPK
-            </p>
+            </p> */}
           </div>
 
           {/* ─── Department & System Info ────────────────────── */}
-          <div className="text-center flex flex-col gap-2">
+          <div className="text-center flex flex-col gap-3">
 
             {/* Department Name */}
             <p
               className="text-sm font-semibold"
               style={{ color: '#edb149' }}
             >
-              {t('login.department')}
+              {t('login.department')} <p>(BPK)</p>
             </p>
 
             {/* University Name */}

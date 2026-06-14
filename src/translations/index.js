@@ -84,7 +84,7 @@ export const translations = {
       demoCredentials:  'Demo Login Credentials',
       clickToExpand:    'Click to expand',
       systemTitle:      'Campus Facility Management System',
-      footer:           '© 2026 UniSiraj BPK · Facility Complaint Management System',
+      footer:           '© 2026 BPK UniSIRAJ· Facility Complaint Management System',
       roles: {
         student: 'Student',
         staff:   'Staff 1',
@@ -276,7 +276,7 @@ export const translations = {
       demoCredentials:  'Kelayakan Log Masuk Demo',
       clickToExpand:    'Klik untuk kembangkan',
       systemTitle:      'Sistem Pengurusan Aduan Kemudahan Kampus',
-      footer:           '© 2026 UniSiraj BPK · Sistem Pengurusan Aduan Kemudahan',
+      footer:           '© 2026 BPK UniSIRAJ · Sistem Pengurusan Aduan Kemudahan',
       roles: {
         student: 'Pelajar',
         staff:   'Kakitangan 1',
