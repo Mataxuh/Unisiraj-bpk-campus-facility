@@ -21,7 +21,7 @@ const SplashScreen = () => {
         <img
           src="/logo.png"
           alt="UniSiraj"
-          className="h-60 w-60 object-contain"
+          className="h-45 w-60 object-contain"
           style={{ animation: 'pulse 2s ease-in-out infinite' }}
         />
       </div>
