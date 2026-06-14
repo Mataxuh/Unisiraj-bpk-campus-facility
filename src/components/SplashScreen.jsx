@@ -1,67 +1,71 @@
 // src/components/SplashScreen.jsx
-// Splash screen — UniSiraj logo with Islamic pattern background
+// Splash screen — reordered layout with longer display time
 
 const SplashScreen = () => {
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 px-20"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 px-10"
       style={{
         backgroundColor:  '#dde3f0',
         backgroundImage:  'url(/background_login.jpg)',
         backgroundSize:   'auto',
         backgroundRepeat: 'repeat',
-        animation:        'fadeOut 0.5s ease-in-out 2.5s forwards',
+        animation:        'fadeOut 0.5s ease-in-out 4s forwards',
       }}
     >
 
-      {/* ─── UniSiraj Logo — Big and Centered ──────────── */}
+      {/* ─── UniSiraj Logo ──────────────────────────────── */}
       <div
-        className="flex flex-col items-center"
         style={{ animation: 'fadeInUp 0.8s ease-out forwards' }}
       >
         <img
           src="/logo.png"
           alt="UniSiraj"
-          className="h-52 w-52 object-contain"
+          className="h-60 w-60 object-contain"
           style={{ animation: 'pulse 2s ease-in-out infinite' }}
         />
       </div>
 
+      {/* ─── System Name ────────────────────────────────── */}
+      <p
+        className="text-lg font-bold tracking-wide text-center"
+        style={{
+          color:     '#1B2D6B',
+          animation: 'fadeInUp 0.8s ease-out 0.4s both',
+        }}
+      >
+        Campus Facility Management System
+      </p>
+
+
       {/* ─── Gold Divider ───────────────────────────────── */}
       <div
-        className="w-20 h-0.5 opacity-60 rounded-full"
+        className="w-16 h-0.5 rounded-full"
         style={{
           backgroundColor: '#E8A020',
-          animation:        'fadeInUp 0.8s ease-out 0.5s both',
+          opacity:          0.7,
+          animation:        'fadeInUp 0.8s ease-out 0.3s both',
         }}
       />
 
-      {/* ─── System Info ────────────────────────────────── */}
-      <div
-        className="text-center flex flex-col gap-1"
-        style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
+            {/* ─── University Full Name ───────────────────────── */}
+      <p
+        className="text-xs text-center leading-relaxed"
+        style={{
+          color:     '#1B2D6B',
+          opacity:   0.7,
+          animation: 'fadeInUp 0.8s ease-out 0.2s both',
+        }}
       >
-        {/* System Name */}
-        <p
-          className="text-base font-bold tracking-wide"
-          style={{ color: '#1B2D6B' }}
-        >
-          Campus Facility Management System
-        </p>
+        Universiti Islam Antarabangsa Tuanku Syed Sirajuddin 
+        <p>(UniSIRAJ)</p>
+      </p>
 
-        {/* Full University Name */}
-        <p
-          className="text-xs max-w-xs text-center leading-relaxed"
-          style={{ color: '#1B2D6B', opacity: 0.7 }}
-        >
-          Universiti Islam Antarabangsa Tuanku Syed Sirajuddin (UniSIRAJ)
-        </p>
-      </div>
 
       {/* ─── Loading Dots ───────────────────────────────── */}
       <div
-        className="flex items-center gap-2 mt-2"
-        style={{ animation: 'fadeInUp 0.8s ease-out 0.6s both' }}
+        className="flex items-center gap-2 mt-1"
+        style={{ animation: 'fadeInUp 0.8s ease-out 0.2s both' }}
       >
         {[0, 1, 2].map((i) => (
           <div

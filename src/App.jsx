@@ -108,7 +108,7 @@ const App = () => {
     // Hide splash screen after 3 seconds
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 3000);
+    }, 5000);
 
     // Cleanup timer on unmount
     return () => clearTimeout(timer);
