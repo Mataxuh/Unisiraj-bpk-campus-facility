@@ -35,7 +35,7 @@ const Navbar = () => {
           <img
             src="/logo.png"
             alt="UniSiraj Logo"
-            className="h-10 sm:h-20 object-contain"
+            className="h-8 sm:h-20 object-contain"
           />
         </div>
 
