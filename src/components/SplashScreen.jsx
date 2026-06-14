@@ -10,7 +10,7 @@ const SplashScreen = () => {
         backgroundImage:  'url(/background_login.jpg)',
         backgroundSize:   'auto',
         backgroundRepeat: 'repeat',
-        animation:        'fadeOut 0.5s ease-in-out 4s forwards',
+        animation:        'fadeOut 0.5s ease-in-out 2.5s forwards',
       }}
     >
 
