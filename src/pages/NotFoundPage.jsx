@@ -31,9 +31,9 @@ const NotFoundPage = () => {
       }}
     >
 
-      {/* ─── 404 Card — fades in and slides up on load ─────── */}
+      {/* ─── 404 Card — fades in and slides up on load (rounded-lg) ─────── */}
       <div
-        className="bg-white shadow-2xl rounded-lg w-full max-w-md overflow-hidden text-center"
+        className="bg-white shadow-2xl w-full max-w-md overflow-hidden text-center"
         style={{ animation: 'fadeSlideUp 0.6s ease-out forwards' }}
       >
 
@@ -43,7 +43,7 @@ const NotFoundPage = () => {
           style={{ backgroundColor: '#1B2D6B' }}
         >
           <img
-            src="/logo.png"
+            src="/bpk-logo.png"
             alt="UniSiraj"
             className="h-30 w-30 object-contain rounded-full bg-white p-0.5 shadow-lg"
           />
