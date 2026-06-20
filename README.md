@@ -31,7 +31,7 @@ This system digitally transforms the facility complaint management process — r
 | ⚙️ Admin | admin@unisiraj.edu.my | admin123 |
 | 🔧 Technician | tech@unisiraj.edu.my | tech123 |
 
----
+|--------------------------------------------------------------|
 
 ## 📱 Screenshots
 
@@ -56,7 +56,7 @@ This system digitally transforms the facility complaint management process — r
 ### 404 Page
 ![404](screenshots/404.png)
 
----
+|------------------------------------------------------------------|
 
 ## ✨ Key Features
 
@@ -72,7 +72,7 @@ This system digitally transforms the facility complaint management process — r
 - ✅ 404 error page with animation
 - ✅ Offline capability via Service Worker
 
----
+|--------------------------------------------------------------|
 
 ## 👥 User Roles
 
@@ -100,7 +100,7 @@ This system digitally transforms the facility complaint management process — r
 - Add progress notes
 - View full update history
 
----
+|--------------------------------------------------|
 
 ## 🔄 Complaint Workflow
 1️⃣  Student/Staff submits complaint
@@ -120,19 +120,19 @@ This system digitally transforms the facility complaint management process — r
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| **React.js** | Frontend UI framework |
-| **Vite** | Build tool & dev server |
-| **Tailwind CSS v4** | Styling & responsive design |
-| **React Router v6** | Page navigation |
-| **LocalStorage** | Data persistence |
-| **Lucide React** | Icons |
-| **PWA** | Installable web app |
-| **Vercel** | Hosting & deployment |
-| **GitHub** | Version control |
+| Technology               | Purpose                     |
+|--------------------------|-----------------------------|
+| **React.js**             | Frontend UI framework       |
+| **Vite**                 | Build tool & dev server     |
+| **Tailwind CSS v4**      | Styling & responsive design |
+| **React Router v6**      | Page navigation             |
+| **LocalStorage**         | Data persistence            |
+| **Lucide React**         | Icons                       |
+| **PWA**                  | Installable web app         |
+| **Vercel**               | Hosting & deployment        |
+| **GitHub**               | Version control             |
 
----
+|--------------------------------------------------------|
 
 ## 🚀 Getting Started
 
@@ -150,17 +150,17 @@ npm install
 npm run dev
 ```
 
----
+|------------------------------------------------------------------------------------|
 
 ## 🔮 Future Enhancements
 
-| # | Enhancement | Impact |
-|---|---|---|
-| 1 | **Real Database** (Firebase/Supabase) | Cross-device data sharing ⭐⭐⭐⭐⭐ |
-| 2 | **Email & Push Notifications** | Better communication ⭐⭐⭐⭐⭐ |
-| 3 | **Analytics Dashboard** | Data-driven decisions ⭐⭐⭐⭐⭐ |
-| 4 | **Photo Attachments** | Better documentation ⭐⭐⭐⭐ |
-| 5 | **Rating & Feedback System** | Service quality tracking ⭐⭐⭐⭐ |
+| # | Enhancement                           |             Impact                     |
+|---|-------------------|------------------------------------------------------------|
+| 1 | **Real Database** (Firebase/Supabase) | Cross-device data sharing ⭐⭐⭐⭐⭐ 
+| 2 | **Email & Push Notifications**        | Better communication ⭐⭐⭐⭐⭐ 
+| 3 | **Analytics Dashboard**               | Data-driven decisions ⭐⭐⭐⭐⭐ 
+| 4 | **Photo Attachments**                 | Better documentation ⭐⭐⭐⭐ 
+| 5 | **Rating & Feedback System**          | Service quality tracking ⭐⭐⭐⭐ 
 
 ---
 
@@ -175,12 +175,12 @@ npm run dev
 
 ## 👨‍💻 Team
 
-| Name | Role |
-|---|---|
-| **Muhammad Mataxuh** | Lead Developer & Designer |
-| **Auwal Lawal Ibrahim** | Team Member |
-| **Aminu Ibrahim Musa** | Team Member |
-| **Claude AI (Anthropic)** | Development Assistant |
+| Name                       | Role                      |
+|----------------------------|---------------------------|
+| **Muhammad Mataxuh**       | Lead Developer & Designer |
+| **Auwal Lawal Ibrahim**    | Team Member               |
+| **Aminu Ibrahim Musa**     | Team Member               |
+| **Claude AI (Anthropic)**  | Development Assistant     |
 
 ---
 
@@ -188,85 +188,85 @@ npm run dev
 campus-facility/
 
 ├── public/
-|   |
+
 │   ├── logo.png
-|   |
+
 │   ├── bpk-logo.png
-|   |
+
 │   ├── icon192.png
-|   |
+
 │   ├── icon512.png
-|   |
+
 │   ├── background_login.jpg
-|   |
+
 │   ├── manifest.json
-|   |
+
 │   └── sw.js
-|   
+
 ├── screenshots/
-|   |
+
 │   ├── splash.png
-|   |
+
 │   ├── login.png
-|   |
+
 │   ├── student.png
-|   |
+
 │   ├── staff.png
-|   |
+
 │   ├── admin.png
-|   |
+
 │   ├── technician.png
-|   |
+
 │   └── 404.png
 ├── src/
-|   |
+
 │   ├── components/
-|   |
+
 │   │   ├── LanguageToggle.jsx
-|   |
+
 │   │   ├── Navbar.jsx
-|   |
+
 │   │   ├── Notification.jsx
-|   |
+
 │   │   └── SplashScreen.jsx
-|   |
+
 │   ├── context/
-|   |
+
 │   │   ├── AppContext.jsx
-|   |   |
+
 │   │   └── LanguageContext.jsx
-|   |
+
 │   ├── pages/
-|   |   |
+
 │   │   ├── AdminPage.jsx
-|   |   |
+
 │   │   ├── LoginPage.jsx
-|   |   |
+
 │   │   ├── NotFoundPage.jsx
-|   |   |
+
 │   │   ├── StaffPage.jsx
-|   |   |
+
 │   │   ├── StudentPage.jsx
-|   |   |
+
 │   │   └── TechnicianPage.jsx
-|   |   |
 │   ├── translations/
+
 │   │   └── index.js
-|   |   
+
 │   ├── utils/
-|   |
+
 │   │   └── storage.js
-|   |
+
 │   ├── App.jsx
-|   |
+
 │   ├── index.css
-|   |
+
 │   └── main.jsx
-|   |
+
 ├── index.html
-|
+
 ├── vercel.json
-|
+
 └── vite.config.js
 
 ---
